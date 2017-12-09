@@ -54,14 +54,26 @@ NQUOTE [^']
     DBG( printf("Shift STRING\n"); )
     return(STRING);
 }
+ /*{A}{N}{D} {
+    DBG( printf("Shift AND\n"); )
+    return(AND);
+}*/
 {A}{R}{R}{A}{Y} {
     DBG( printf("Shift ARRAY\n"); )
     return(ARRAY);
 }
+ /*{D}{I}{V} {
+    DBG( printf("Shift DIV\n"); )
+    return(DIV);
+}*/
 {D}{O} {
     DBG( printf("Shift DO\n"); )
     return(DO);
 }
+ /*{D}{O}{W}{N}{T}{O} {
+    DBG( printf("Shift DOWNTO\n"); )
+    return(DOWNTO);
+}*/
 {E}{L}{S}{E} {
     DBG( printf("Shift ELSE\n"); )
     return(ELSE);
@@ -70,6 +82,19 @@ NQUOTE [^']
     DBG( printf("Shift END\n"); )
     return(END);
 }
+ /*{E}{X}{T}{E}{R}{N} |
+{E}{X}{T}{E}{R}{N}{A}{L} {
+    DBG( printf("Shift EXTERNAL\n"); )
+    return(EXTERNAL); 
+}*/
+ /*{F}{O}{R} {
+    DBG( printf("Shift OR\n"); )
+    return(FOR);
+}*/
+ /*{F}{O}{R}{W}{A}{R}{D} {
+    DBG( printf("Shift FORWARD\n"); )
+    return(FORWARD);
+}*/
 {F}{U}{N}{C}{T}{I}{O}{N} {
     DBG( printf("Shift FUNCTION\n"); )
     return(FUNCTION);
@@ -78,6 +103,22 @@ NQUOTE [^']
     DBG( printf("Shift IF\n"); )
     return(IF);
 }
+ /*{I}{N} {
+    DBG( printf("Shift IN\n"); )
+    return(IN);
+}*/
+ /*{L}{A}{B}{E}{L} {
+    DBG( printf("Shift LABEL\n"); )
+    return(LABEL);
+}*/
+ /*{M}{O}{D} {
+    DBG( printf("Shift MOD\n"); )
+    return(MOD);
+}*/
+ /*{N}{I}{L} {
+    DBG( printf("Shift NIL\n"); )
+    return(NIL);
+}*/
 {N}{O}{T} {
     DBG( printf("Shift NOT\n"); )
     return(NOT);
@@ -86,10 +127,26 @@ NQUOTE [^']
     DBG( printf("Shift OF\n"); )
     return(OF);
 }
+ /*{O}{R} {
+    DBG( printf("Shift OR\n"); )
+    return(OR);
+}*/
+ /*{O}{T}{H}{E}{R}{W}{I}{S}{E} {
+    DBG( printf("Shift OTHERWISE\n"); )
+    return(OTHERWISE);
+}*/
+ /*{P}{A}{C}{K}{E}{D} {
+    DBG( printf("Shift PACKED\n"); )
+    return(PACKED);
+}*/
 {B}{E}{G}{I}{N} {
     DBG( printf("Shift PBEGIN\n"); )
     return(PBEGIN);
 }
+ /*{F}{I}{L}{E} {
+    DBG( printf("Shift PFILE\n"); )
+    return(PFILE);
+}*/
 {P}{R}{O}{C}{E}{D}{U}{R}{E} {
     DBG( printf("Shift PROCEDURE\n"); )
     return(PROCEDURE);
@@ -98,10 +155,31 @@ NQUOTE [^']
     DBG( printf("Shift PROGRAM\n"); )
     return(PROGRAM);
 }
+ /*{R}{E}{C}{O}{R}{D} {
+    DBG( printf("Shift RECORD\n"); )
+    return(RECORD);
+}*/
+ /*{R}{E}{P}{E}{A}{T} {
+    DBG( printf("Shift REPEAT\n"); )
+    return(REPEAT);
+}*/
+ /*{S}{E}{T} {
+    DBG( printf("Shift SET\n"); )
+    return(SET);
+}*/
 {T}{H}{E}{N} {
     DBG( printf("Shift THEN\n"); )
     return(THEN);
 }
+ /*{T}{O} {
+    DBG( printf("Shift TO\n"); )
+    return(TO);
+}*/
+ /*{T}{Y}{P}{E}   return(TYPE);*/
+ /*{U}{N}{T}{I}{L} {
+    DBG( printf("Shift UNTIL\n"); )
+    return(UNTIL);
+}*/
 {V}{A}{R} {
     DBG( printf("Shift VAR\n"); )
     return(VAR);
@@ -110,6 +188,10 @@ NQUOTE [^']
     DBG( printf("Shift WHILE\n"); )
     return(WHILE);
 }
+ /*{W}{I}{T}{H} {
+    DBG( printf("Shift WITH\n"); )
+    return(WITH);
+}*/
 [a-zA-Z]([a-zA-Z0-9])* {
     DBG( printf("Shift IDENTIFIER\n"); )
     return(IDENTIFIER);
@@ -206,6 +288,11 @@ NQUOTE [^']
     DBG( printf("Shift STAR\n"); )
     return(STAR);
 }
+ /*"->" |
+"^" {
+    DBG( printf("Shift UPARROW\n"); )
+    return(UPARROW);
+}*/
 "(*" |
 "{" {
     register int c;
